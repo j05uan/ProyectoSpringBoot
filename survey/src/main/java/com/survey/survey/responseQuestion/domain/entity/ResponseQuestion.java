@@ -1,4 +1,7 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.responseQuestion.domain.entity;
+
+import com.survey.survey.responseOptions.domain.entity.ResponseOptions;
+import com.survey.survey.subresponse.domain.entity.Subresponse;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

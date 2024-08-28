@@ -1,5 +1,9 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.responseOptions.domain.entity;
 
+
+import com.survey.survey.At.domain.entity.At;
+import com.survey.survey.categories.domain.entity.Categories;
+import com.survey.survey.question.domain.entity.Questions;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;

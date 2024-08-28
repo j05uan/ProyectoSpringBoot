@@ -1,4 +1,4 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.useRole.domain.entities;
 
 import java.io.Serializable;
 

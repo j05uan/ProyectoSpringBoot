@@ -1,4 +1,4 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.At.domain.entity;
 
 
 import java.time.LocalDateTime;

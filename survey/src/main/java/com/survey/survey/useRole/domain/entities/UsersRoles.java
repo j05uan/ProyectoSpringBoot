@@ -1,4 +1,7 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.useRole.domain.entities;
+
+import com.survey.survey.roles.domain.entity.Roles;
+import com.survey.survey.user.domain.entity.Users;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

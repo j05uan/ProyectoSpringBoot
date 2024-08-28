@@ -1,4 +1,4 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.user.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,16 +12,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table (name = "roles")
-public class Roles {
+@Table (name = "users")
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
-    private String name;
+    @Column(columnDefinition = "BOOL", nullable = false)
+    private boolean enable;
 
+    @Column(columnDefinition = "VARCHAR(12)", nullable = false)
+    private String username;
+
+    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
+    private String password;
 
     
 

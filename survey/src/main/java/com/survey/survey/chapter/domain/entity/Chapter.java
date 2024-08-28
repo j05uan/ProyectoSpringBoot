@@ -1,4 +1,7 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.chapter.domain.entity;
+
+import com.survey.survey.At.domain.entity.At;
+import com.survey.survey.surveys.domain.entity.Surveys;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -15,26 +18,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table ( name = "subresponse_options")
-public class Subresponse {
+@Table( name = "chapter")
+public class Chapter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column( columnDefinition = "INT(4)", nullable = false)
-    private int subresponse_numbre;
+    @ManyToOne
+    @JoinColumn(name = "survey_id")
+    private Surveys survey;
 
     @Embedded
     private At at = new At();
 
-    @ManyToOne
-    @JoinColumn( name = "responseoptions_id")
-    private ResponseOptions responseOptions;
+    @Column( columnDefinition = "VARCHAR(50)", nullable = false)
+    private String chapter_number;
+    @Column( columnDefinition = "VARCHAR(50)", nullable = false)
+    private String chapter_title;
 
-    @Column( columnDefinition = "VARCHAR(255)", nullable = false)
-    private String component_html;
 
-    @Column( columnDefinition = "VARCHAR(255)", nullable = false)
-    private String subresponse_text;
 }

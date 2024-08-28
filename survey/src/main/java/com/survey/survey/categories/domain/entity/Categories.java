@@ -1,4 +1,6 @@
-package com.survey.survey.domain.entities;
+package com.survey.survey.categories.domain.entity;
+
+import com.survey.survey.At.domain.entity.At;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -6,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,24 +15,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table( name = "chapter")
-public class Chapter {
+@Table(name = "categories_catalog")
+public class Categories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "survey_id")
-    private Surveys survey;
-
     @Embedded
     private At at = new At();
+    
+    @Column( columnDefinition = "VARCHAR(255)", nullable = false)
+    private String name;
 
-    @Column( columnDefinition = "VARCHAR(50)", nullable = false)
-    private String chapter_number;
-    @Column( columnDefinition = "VARCHAR(50)", nullable = false)
-    private String chapter_title;
-
+    // @OneToMany
+    // @JoinColumn( name = "categorycatalog_id", nullable = false)
+    // private ResponseOptions responseOptions;
 
 }
