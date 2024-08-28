@@ -26,5 +26,8 @@ public class Categories {
     @Column( columnDefinition = "VARCHAR(255)", nullable = false)
     private String name;
 
+    // @OneToMany
+    // @JoinColumn( name = "categorycatalog_id", nullable = false)
+    // private ResponseOptions responseOptions;
 
 }

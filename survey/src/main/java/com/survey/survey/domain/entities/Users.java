@@ -28,5 +28,6 @@ public class Users {
     @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     private String password;
 
+    
 
 }

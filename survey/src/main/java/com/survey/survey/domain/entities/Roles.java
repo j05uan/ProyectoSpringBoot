@@ -22,4 +22,7 @@ public class Roles {
     @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     private String name;
 
+
+    
+
 }

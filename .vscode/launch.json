@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SurveyApplication<survey>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.survey.survey.SurveyApplication",
+            "projectName": "survey",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

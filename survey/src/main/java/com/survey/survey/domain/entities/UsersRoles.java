@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class users_roles {
+public class UsersRoles {
 
     @EmbeddedId
     private userRoleId id;
