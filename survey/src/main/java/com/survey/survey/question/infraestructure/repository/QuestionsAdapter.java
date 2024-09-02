@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.survey.survey.question.application.service.IQuestionservice;
 import com.survey.survey.question.domain.entity.Questions;
 
+@Service
 public class QuestionsAdapter implements IQuestionservice{
 
     @Autowired

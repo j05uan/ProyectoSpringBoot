@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.survey.survey.chapter.application.service.IChapterservice;
 import com.survey.survey.chapter.domain.entity.Chapter;
 
+@Service
 public class ChapterAdapter  implements IChapterservice {
 
     @Autowired
