@@ -10,28 +10,28 @@ import com.survey.survey.At.domain.entity.At;
 
 public class AtAdapter implements  IAtservice {
 
-    @Autowired
-    private Atrepository atrepository;
+    // @Autowired
+    // private Atrepository atrepository;
 
-    @Override
-    public Optional<At> findByID(long id){
-        return atrepository.findById(id);
-    }
+    // @Override
+    // public Optional<At> findByID(long id){
+    //     return atrepository.findById(id);
+    // }
 
-    @Override
-    public List<At> getAll(){
-        return atrepository.findAll();
-    }
+    // @Override
+    // public List<At> getAll(){
+    //     return atrepository.findAll();
+    // }
 
-    @Override
-    public At save(At at){
-        return atrepository.save(at);
-    }
+    // @Override
+    // public At save(At at){
+    //     return atrepository.save(at);
+    // }
 
-    @Override
-    public void  deleteById(long id){
-        atrepository.deleteById(id);
-    }
+    // @Override
+    // public void  deleteById(long id){
+    //     atrepository.deleteById(id);
+    // }
 
 
     //El metodo save retorna el objeto
