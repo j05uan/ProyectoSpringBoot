@@ -38,7 +38,7 @@ public class ResponseQuestionController {
         return iResponseQuestionservice.getAll();
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<ResponseQuestion> create (@RequestBody ResponseQuestion entity) {
         iResponseQuestionservice.save(entity);
         return new ResponseEntity<>(entity, HttpStatus.CREATED);
@@ -57,6 +57,7 @@ public class ResponseQuestionController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         if(iResponseQuestionservice.findByID(id).isPresent()){
