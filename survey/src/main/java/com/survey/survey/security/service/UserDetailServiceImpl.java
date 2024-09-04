@@ -9,10 +9,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.survey.survey.user.domain.entity.Users;
 import com.survey.survey.user.infraestructure.repository.Userrepository;
 
+@Service
 public class UserDetailServiceImpl implements UserDetailsService{
 
     @Autowired
@@ -21,7 +23,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
     @Override
     public  UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         
-        Users user = userrepository.findUserByUsername(username)
+        Users user = userrepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("El usuario "+ username + "no existe ."));
 
         List<SimpleGrantedAuthority> authoritys = new ArrayList<>();

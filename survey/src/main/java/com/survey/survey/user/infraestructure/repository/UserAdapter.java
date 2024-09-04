@@ -35,4 +35,9 @@ public class UserAdapter implements IUserservice{
         userrepository.deleteById(id);
     }
 
+    @Override
+    public Optional<Users> findByUsername(String username){
+        return  userrepository.findByUsername(username);
+    }
+
 }

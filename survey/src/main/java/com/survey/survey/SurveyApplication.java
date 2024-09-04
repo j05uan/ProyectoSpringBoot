@@ -60,7 +60,7 @@ public class SurveyApplication {
 			//Crear usuarios
 			Users userJP = Users.builder()
 				.username("JP")
-				.password("1234")
+				.password("$2a$10$.hxgRIbNsaft7HM8JBcCH.cvK9dkrL/xoXwu50cW9JB.46JmTM0JK")
 				.isEnable(true)
 				.accountNoExpired(true)
 				.accountNoLocked(true)
@@ -70,7 +70,7 @@ public class SurveyApplication {
 
 			Users userYolber = Users.builder()
 				.username("Yolber")
-				.password("1234")
+				.password("$2a$10$.hxgRIbNsaft7HM8JBcCH.cvK9dkrL/xoXwu50cW9JB.46JmTM0JK")
 				.isEnable(true)
 				.accountNoExpired(true)
 				.accountNoLocked(true)

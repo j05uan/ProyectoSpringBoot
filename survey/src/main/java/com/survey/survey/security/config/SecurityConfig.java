@@ -25,53 +25,45 @@ import com.survey.survey.security.service.UserDetailServiceImpl;
 public class SecurityConfig {
 
     @Autowired
-    AuthenticationConfiguration authenticationConfiguration;
+    private UserDetailServiceImpl userDetailServiceImpl;
 
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity
-            .sessionManagement( session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+    @Autowired
+    private AuthenticationConfiguration authenticationConfiguration;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+            .csrf(csrf -> csrf.disable())
             .httpBasic(Customizer.withDefaults())
-            .authorizeHttpRequests(http -> {
-                http.requestMatchers(HttpMethod.GET, "/auth/hello").permitAll();
-                http.requestMatchers(HttpMethod.GET, "/auth/hello-secured").hasAuthority("CREATE");
-
-                http.anyRequest().authenticated();
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(authorizeHttpRequestsCustomizer -> {
+                authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.GET, "/auth/get").permitAll();
+                authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.GET, "/auth/get").hasRole("Admin") ;
+                authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyAuthority("CREATE");
+                authorizeHttpRequestsCustomizer.anyRequest().denyAll();
             })
             .build();
     }
 
-
-    public AuthenticationManager authenticationManager() throws Exception{
+    @Bean
+    public AuthenticationManager authenticationManager() throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(UserDetailServiceImpl userDetailServiceImpl){
+    public AuthenticationProvider authenticationProvider(PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(null);
+        provider.setPasswordEncoder(passwordEncoder);
         provider.setUserDetailsService(userDetailServiceImpl);
         return provider;
     }
 
-    // @Bean
-    // public UserDetailsService userDetailsService(){
-    //     UserDetails userDetails = User.withUsername("JP")
-    //         .password("1234")
-    //         .roles("ADMIN")
-    //         .authorities("READ", "CREATE")
-    //         .build();
-
-    //     return new InMemoryUserDetailsManager(userDetails);
-    // }
-
-    
-
-
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return  new BCryptPasswordEncoder(); //es para encriptar
-        // return NoOpPasswordEncoder.getInstance();
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(); // Es para encriptar
     }
 
-
+    // public static void main(String[] args) {
+    //     System.out.println(new BCryptPasswordEncoder().encode("1234"));
+    // }
 }

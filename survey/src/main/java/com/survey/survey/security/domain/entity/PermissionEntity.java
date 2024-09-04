@@ -20,7 +20,6 @@ import lombok.Setter;
 @Entity
 @Table (name = "permisses")
 public class PermissionEntity {
-     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

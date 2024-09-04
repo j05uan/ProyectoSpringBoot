@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-@PreAuthorize("denyAll()")
+@PreAuthorize("permitAll()")
 public class TestAuthController {
 
     @GetMapping("/get")
@@ -38,6 +38,11 @@ public class TestAuthController {
     @PatchMapping("/patch")
     public String hellopatch(){
         return "hello word - patch";
+    }
+
+    @PatchMapping("/login")
+    public String login(){
+        return "user";
     }
 
     
