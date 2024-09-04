@@ -2,6 +2,8 @@ package com.survey.survey.security.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -16,7 +18,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.survey.survey.roles.domain.entity.Roles;
 import com.survey.survey.roles.infraestructure.repository.Rolesrepository;
+import com.survey.survey.security.controller.dto.AuthCreateUser;
 import com.survey.survey.security.controller.dto.AuthLoginRequest;
 import com.survey.survey.security.controller.dto.AuthResponse;
 import com.survey.survey.user.domain.entity.Users;
@@ -37,6 +41,8 @@ public class UserDetailServiceImpl implements UserDetailsService{
 
     @Autowired
     private Rolesrepository rolesrepository;
+
+    
 
     @Override
     public  UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
@@ -88,5 +94,14 @@ public class UserDetailServiceImpl implements UserDetailsService{
         }
 
         return new UsernamePasswordAuthenticationToken(username, password, userDetails.getAuthorities());
+    }
+
+    public AuthResponse createUser(AuthCreateUser authCreateUser){
+        String username = authCreateUser.username();
+        String password = authCreateUser.password();
+        List<String> roleRequest = authCreateUser.roleRequest().roleListName();
+
+        Set<Roles> roles = rolesrepository.findRolesByRoleName(roleRequest).stream().collect(Collector.toSet());
+        // aca quedamos
     }
 }

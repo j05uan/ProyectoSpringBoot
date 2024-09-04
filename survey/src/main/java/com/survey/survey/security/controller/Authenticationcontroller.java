@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.survey.survey.security.controller.dto.AuthCreateUser;
 import com.survey.survey.security.controller.dto.AuthLoginRequest;
 import com.survey.survey.security.controller.dto.AuthResponse;
 import com.survey.survey.security.service.UserDetailServiceImpl;
@@ -23,7 +24,7 @@ public class Authenticationcontroller {
 
     @PostMapping("/sign-up")
     public ResponseEntity<AuthResponse> register(AuthCreateUser authCreateUser){
-        return  new ResponseEntity<>(this.userDetailServiceImpl.createUser(), HttpStatus.CREATED);
+        return  new ResponseEntity<>(this.userDetailServiceImpl.createUser(authCreateUser), HttpStatus.CREATED);
 
     }
 

@@ -1,6 +1,9 @@
 package com.survey.survey.security.controller.dto;
 
-public class AuthCreateUser {
-    
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+
+public record  AuthCreateUser(@NotBlank String username,@NotBlank  String password,@Valid AuthCreateRoleRequest roleRequest) {
+
 
 }
