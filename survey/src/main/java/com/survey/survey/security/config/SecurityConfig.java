@@ -16,8 +16,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import com.survey.survey.security.config.filter.JwtTokenValidater;
 import com.survey.survey.security.service.UserDetailServiceImpl;
+import com.survey.survey.utils.JwtUtils;
 
 @Configuration
 @EnableWebSecurity
@@ -25,7 +28,9 @@ import com.survey.survey.security.service.UserDetailServiceImpl;
 public class SecurityConfig {
 
     @Autowired
-    private UserDetailServiceImpl userDetailServiceImpl;
+    private JwtUtils jwtUtils;
+
+
 
     @Autowired
     private AuthenticationConfiguration authenticationConfiguration;
@@ -37,23 +42,24 @@ public class SecurityConfig {
             .httpBasic(Customizer.withDefaults())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorizeHttpRequestsCustomizer -> {
-                authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.GET, "/auth/get").permitAll();
+                authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
                 authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.GET, "/auth/get").hasRole("Admin") ;
                 authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyAuthority("CREATE");
                 authorizeHttpRequestsCustomizer.anyRequest().denyAll();
             })
+            .addFilterBefore(new JwtTokenValidater(jwtUtils), BasicAuthenticationFilter.class)
             .build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(PasswordEncoder passwordEncoder) {
+    public AuthenticationProvider authenticationProvider(UserDetailServiceImpl userDetailServiceImpl) {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder);
+        provider.setPasswordEncoder(passwordEncoder());
         provider.setUserDetailsService(userDetailServiceImpl);
         return provider;
     }
