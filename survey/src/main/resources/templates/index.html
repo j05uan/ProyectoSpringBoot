@@ -8,6 +8,7 @@
 <body>
     <h1>Gestión de Encuestas</h1>
     
+    <!-- Sección para Encuestas -->
     <section id="create-survey">
         <h2>Crear Encuesta</h2>
         <form id="createSurveyForm">
@@ -46,89 +47,161 @@
             <button type="submit">Eliminar</button>
         </form>
     </section>
+
+    <!-- Sección para Capítulos -->
+    <section id="create-chapter">
+        <h2>Crear Capítulo</h2>
+        <form id="createChapterForm">
+            <label for="surveyId">Encuesta ID:</label>
+            <select id="surveyId" required></select>
+            <label for="chapterNumber">Número del Capítulo:</label>
+            <input type="text" id="chapterNumber" required>
+            <label for="chapterTitle">Título del Capítulo:</label>
+            <input type="text" id="chapterTitle" required>
+            <button type="submit">Crear</button>
+        </form>
+    </section>
     
-    <script>
+    <section id="update-chapter">
+        <h2>Actualizar Capítulo</h2>
+        <form id="updateChapterForm">
+            <label for="updateId">ID:</label>
+            <input type="number" id="updateId" required>
+            <label for="updateSurveyId">Encuesta ID:</label>
+            <input type="number" id="updateSurveyId">
+            <label for="updateChapterNumber">Número del Capítulo:</label>
+            <input type="text" id="updateChapterNumber">
+            <label for="updateChapterTitle">Título del Capítulo:</label>
+            <input type="text" id="updateChapterTitle">
+            <button type="submit">Actualizar</button>
+        </form>
+    </section>
+    
+    <section id="delete-chapter">
+        <h2>Eliminar Capítulo</h2>
+        <form id="deleteChapterForm">
+            <label for="deleteId">ID:</label>
+            <input type="number" id="deleteId" required>
+            <button type="submit">Eliminar</button>
+        </form>
+    </section>
+    
+    <section id="list-chapters">
+        <h2>Lista de Capítulos</h2>
+        <button onclick="fetchChapters()">Actualizar Lista</button>
+        <ul id="chapterList"></ul>
+    </section>
 
-        const API_URL = 'http://localhost:8080/api/surveys';
+    <!-- Sección para Preguntas -->
+    <section id="create-question">
+        <h2>Crear Pregunta</h2>
+        <form id="createQuestionForm">
+            <label for="questionChapterId">Capítulo ID:</label>
+            <select id="questionChapterId" required></select>
+            <label for="questionNumber">Número de Pregunta:</label>
+            <input type="text" id="questionNumber" required>
+            <label for="responseType">Tipo de Respuesta:</label>
+            <input type="text" id="responseType" required>
+            <label for="commentQuestion">Comentario:</label>
+            <textarea id="commentQuestion" required></textarea>
+            <label for="questionText">Texto de la Pregunta:</label>
+            <textarea id="questionText" required></textarea>
+            <button type="submit">Crear</button>
+        </form>
+    </section>
+    
+    <section id="update-question">
+        <h2>Actualizar Pregunta</h2>
+        <form id="updateQuestionForm">
+            <label for="updateQuestionId">ID:</label>
+            <input type="number" id="updateQuestionId" required>
+            <label for="updateQuestionChapterId">Capítulo ID:</label>
+            <input type="number" id="updateQuestionChapterId">
+            <label for="updateResponseType">Tipo de Respuesta:</label>
+            <input type="text" id="updateResponseType">
+            <label for="updateCommentQuestion">Comentario:</label>
+            <textarea id="updateCommentQuestion"></textarea>
+            <label for="updateQuestionText">Texto de la Pregunta:</label>
+            <textarea id="updateQuestionText"></textarea>
+            <button type="submit">Actualizar</button>
+        </form>
+    </section>
+    
+    <section id="delete-question">
+        <h2>Eliminar Pregunta</h2>
+        <form id="deleteQuestionForm">
+            <label for="deleteQuestionId">ID:</label>
+            <input type="number" id="deleteQuestionId" required>
+            <button type="submit">Eliminar</button>
+        </form>
+    </section>
+    
+    <section id="list-questions">
+        <h2>Lista de Preguntas</h2>
+        <button onclick="fetchQuestions()">Actualizar Lista</button>
+        <ul id="questionList"></ul>
+    </section>
 
-        document.getElementById('createSurveyForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const survey = {
-                name: document.getElementById('name').value,
-                description: document.getElementById('description').value
-            };
-            
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(survey)
-                });
+    <!-- Sección para Opciones de Respuesta -->
+    <section id="create-response-option">
+        <h2>Crear Opción de Respuesta</h2>
+        <form id="createResponseOptionForm">
+            <label for="optionValue">Valor de Opción:</label>
+            <input type="text" id="optionValue" required>
+            <label for="categoryId">Categoría ID:</label>
+            <select id="categoryId" required></select>
+            <label for="parentResponseId">Opción de Respuesta Padre ID:</label>
+            <input type="number" id="parentResponseId">
+            <label for="questionId">Pregunta ID:</label>
+            <select id="questionId" required></select>
+            <label for="commentResponse">Comentario:</label>
+            <textarea id="commentResponse" required></textarea>
+            <label for="optionText">Texto de Opción:</label>
+            <textarea id="optionText" required></textarea>
+            <button type="submit">Crear</button>
+        </form>
+    </section>
+    
+    <section id="update-response-option">
+        <h2>Actualizar Opción de Respuesta</h2>
+        <form id="updateResponseOptionForm">
+            <label for="updateId">ID:</label>
+            <input type="number" id="updateId" required>
+            <label for="updateOptionValue">Valor de Opción:</label>
+            <input type="text" id="updateOptionValue">
+            <label for="updateCategoryId">Categoría ID:</label>
+            <input type="number" id="updateCategoryId">
+            <label for="updateParentResponseId">Opción de Respuesta Padre ID:</label>
+            <input type="number" id="updateParentResponseId">
+            <label for="updateQuestionId">Pregunta ID:</label>
+            <input type="number" id="updateQuestionId">
+            <label for="updateCommentResponse">Comentario:</label>
+            <textarea id="updateCommentResponse"></textarea>
+            <label for="updateOptionText">Texto de Opción:</label>
+            <textarea id="updateOptionText"></textarea>
+            <button type="submit">Actualizar</button>
+        </form>
+    </section>
+    
+    <section id="delete-response-option">
+        <h2>Eliminar Opción de Respuesta</h2>
+        <form id="deleteResponseOptionForm">
+            <label for="deleteResponseOptionId">ID:</label>
+            <input type="number" id="deleteResponseOptionId" required>
+            <button type="submit">Eliminar</button>
+        </form>
+    </section>
+    
+    <section id="list-response-options">
+        <h2>Lista de Opciones de Respuesta</h2>
+        <button onclick="fetchResponseOptions()">Actualizar Lista</button>
+        <ul id="responseOptionList"></ul>
+    </section>
 
-                if (response.ok) {
-                    alert('Encuesta creada con éxito');
-                    fetchSurveys();
-                } else {
-                    throw new Error('Error al crear la encuesta');
-                }
-            } catch (error) {
-                alert(error.message);
-            }
-        });
-
-        document.getElementById('updateSurveyForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const id = document.getElementById('updateId').value;
-            const name = document.getElementById('updateName').value;
-            const description = document.getElementById('updateDescription').value;
-            
-            const response = await fetch(`${API_URL}/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id, name, description })
-            });
-
-            if (response.ok) {
-                alert('Encuesta actualizada con éxito');
-                fetchSurveys();
-            } else {
-                alert('Error al actualizar la encuesta');
-            }
-        });
-
-        document.getElementById('deleteSurveyForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const id = document.getElementById('deleteId').value;
-            
-            const response = await fetch(`${API_URL}/${id}`, {
-                method: 'DELETE'
-            });
-
-            if (response.ok) {
-                alert('Encuesta eliminada con éxito');
-                fetchSurveys();
-            } else {
-                alert('Error al eliminar la encuesta');
-            }
-        });
-
-        async function fetchSurveys() {
-            const response = await fetch(API_URL);
-            const surveys = await response.json();
-            
-            const surveyList = document.getElementById('surveyList');
-            surveyList.innerHTML = '';
-            
-            surveys.forEach(survey => {
-                const li = document.createElement('li');
-                li.textContent = `ID: ${survey.id}, Nombre: ${survey.name}, Descripción: ${survey.description}`;
-                surveyList.appendChild(li);
-            });
-        }
-
-        // Cargar encuestas al inicio
-        fetchSurveys();
-    </script>
+    <!-- Scripts JavaScript -->
+    <script src="./apps/configSurveys.js"></script>
+    <script src="./apps//configChapters.js"></script>
+    <script src="./apps//configQuestions.js"></script>
+    <script src="./apps//configOpQuestions"></script>
 </body>
 </html>
-

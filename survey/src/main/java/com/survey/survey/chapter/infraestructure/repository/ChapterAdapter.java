@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.survey.survey.chapter.application.service.IChapterservice;
 import com.survey.survey.chapter.domain.entity.Chapter;
+import com.survey.survey.chapter.domain.entity.ChapterUpdateDTO;
 
 @Service
 public class ChapterAdapter  implements IChapterservice {
@@ -35,5 +36,19 @@ public class ChapterAdapter  implements IChapterservice {
         chapterepository.deleteById(id);
     }
 
+     public Chapter updateChapter(long id, ChapterUpdateDTO chapterUpdateDTO) {
+        Optional<Chapter> optionalChapter = chapterepository.findById(id);
+        if (optionalChapter.isPresent()) {
+            Chapter chapter = optionalChapter.get();
+            if (chapterUpdateDTO.getChapter_number() != null) {
+                chapter.setChapter_number(chapterUpdateDTO.getChapter_number());
+            }
+            if (chapterUpdateDTO.getChapter_title() != null) {
+                chapter.setChapter_title(chapterUpdateDTO.getChapter_title());
+            }
+            return chapterepository.save(chapter);
+        }
+        return null;
+    }
 
 }
