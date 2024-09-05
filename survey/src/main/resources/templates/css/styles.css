@@ -106,7 +106,10 @@ section {
 }
 #login-container {
     /* margin-top: 10rem; */
+    visibility: hidden;
+    position: absolute;
     padding: 4px;
+
 }
 #loginForm{
     padding-right: 40px;
