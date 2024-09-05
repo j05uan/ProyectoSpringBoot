@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/api/chapters';
+const API_URL1 = 'http://localhost:8080/api/chapters';
 
 // Crear capítulo
 document.getElementById('createChapterForm').addEventListener('submit', async (e) => {
@@ -17,7 +17,7 @@ document.getElementById('createChapterForm').addEventListener('submit', async (e
     };
     
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_URL1, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(chapter)
@@ -48,7 +48,7 @@ document.getElementById('updateChapterForm').addEventListener('submit', async (e
     };
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL1}/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(chapter)
@@ -72,7 +72,7 @@ document.getElementById('deleteChapterForm').addEventListener('submit', async (e
     const id = document.getElementById('deleteId').value;
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL1}/${id}`, {
             method: 'DELETE'
         });
 
@@ -90,7 +90,7 @@ document.getElementById('deleteChapterForm').addEventListener('submit', async (e
 // Obtener todos los capítulos
 async function fetchChapters() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL1);
         const chapters = await response.json();
         
         const chapterList = document.getElementById('chapterList');
@@ -120,7 +120,7 @@ document.getElementById('patchChapterForm').addEventListener('submit', async (e)
     };
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL1}/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updates)

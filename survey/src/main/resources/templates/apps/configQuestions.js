@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/api/questions';
+const API_URL4 = 'http://localhost:8080/api/questions';
 
 // Crear pregunta
 document.getElementById('createQuestionForm').addEventListener('submit', async (e) => {
@@ -19,7 +19,7 @@ document.getElementById('createQuestionForm').addEventListener('submit', async (
     };
     
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_URL4, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(question)
@@ -52,7 +52,7 @@ document.getElementById('updateQuestionForm').addEventListener('submit', async (
     };
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL4}/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(question)
@@ -76,7 +76,7 @@ document.getElementById('deleteQuestionForm').addEventListener('submit', async (
     const id = document.getElementById('deleteId').value;
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL4}/${id}`, {
             method: 'DELETE'
         });
 
@@ -94,7 +94,7 @@ document.getElementById('deleteQuestionForm').addEventListener('submit', async (
 // Obtener todas las preguntas
 async function fetchQuestions() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL4);
         const questions = await response.json();
         
         const questionList = document.getElementById('questionList');
@@ -122,7 +122,7 @@ document.getElementById('patchQuestionForm').addEventListener('submit', async (e
     };
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL4}/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updates)

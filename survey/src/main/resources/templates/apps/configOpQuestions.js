@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/api/response-options';
+const API_URL2 = 'http://localhost:8080/api/response_options';
 
 // Crear opción de respuesta
 document.getElementById('createResponseOptionForm').addEventListener('submit', async (e) => {
@@ -24,7 +24,7 @@ document.getElementById('createResponseOptionForm').addEventListener('submit', a
     };
     
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_URL2, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(responseOption)
@@ -62,7 +62,7 @@ document.getElementById('updateResponseOptionForm').addEventListener('submit', a
     };
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL2}/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(responseOption)
@@ -86,7 +86,7 @@ document.getElementById('deleteResponseOptionForm').addEventListener('submit', a
     const id = document.getElementById('deleteId').value;
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL2}/${id}`, {
             method: 'DELETE'
         });
 
@@ -104,7 +104,7 @@ document.getElementById('deleteResponseOptionForm').addEventListener('submit', a
 // Obtener todas las opciones de respuesta
 async function fetchResponseOptions() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL2);
         const responseOptions = await response.json();
         
         const responseOptionList = document.getElementById('responseOptionList');
@@ -132,7 +132,7 @@ document.getElementById('patchResponseOptionForm').addEventListener('submit', as
     };
     
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL2}/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updates)
