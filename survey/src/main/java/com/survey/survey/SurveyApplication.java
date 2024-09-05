@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.survey.survey.responseOptions.domain.entity.ResponseOptions;
 import com.survey.survey.roles.domain.entity.Roles;
 import com.survey.survey.security.domain.entity.PermissionEntity;
 import com.survey.survey.user.domain.entity.Users;

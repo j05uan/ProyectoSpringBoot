@@ -1,24 +1,76 @@
-// document.getElementById('loginForm').addEventListener('submit', async (e) => {
-//     e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const loginContainer = document.getElementById('login-container');
+    const appContainer = document.getElementById('app-container');
+    const loginForm = document.getElementById('loginForm');
+    const loginMessage = document.getElementById('loginMessage');
+    const profileLink = document.getElementById('profileLink');
+    const loginLink = document.getElementById('loginLink');
 
-//     const username = document.getElementById('username').value;
-//     const password = document.getElementById('password').value;
+    function isAuthenticated() {
+        return localStorage.getItem('token') !== null;
+    }
 
-//     try {
-//         const response = await fetch('http://localhost:8080/api/login', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ username, password })
-//         });
+    
+    function handleAuthentication() {
+        if (isAuthenticated()) {
+            loginContainer.style.display = 'none';
+            appContainer.style.display = 'block';
+        } else {
+            loginContainer.style.display = 'block';
+            appContainer.style.display = 'none';
+        }
+    }
 
-//         if (response.ok) {
-//             const data = await response.json();
-//             localStorage.setItem('token', data.token);
-//             window.location.href = 'home.html';
-//         } else {
-//             alert('Credenciales inválidas');
-//         }
-//     } catch (error) {
-//         console.error('Error al hacer login:', error);
-//     }
-// });
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('http://localhost:8080/auth/log-in', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error en el inicio de sesión');
+            }
+
+            const result = await response.json();
+            localStorage.setItem('token', result.token); 
+            handleAuthentication(); 
+        } catch (error) {
+            loginMessage.textContent = 'Error al iniciar sesión: ' + error.message;
+        }
+    });
+
+    function handleLogout() {
+        localStorage.removeItem('token');
+        handleAuthentication(); 
+    }
+
+
+    document.getElementById('logoutButton').addEventListener('click', handleLogout);
+
+    loginLink.addEventListener('click', () => {
+        if (isAuthenticated()) {
+            handleLogout(); 
+        }
+    });
+
+    profileLink.addEventListener('click', () => {
+        if (!isAuthenticated()) {
+            loginMessage.textContent = 'Debes iniciar sesión para acceder a tu perfil.';
+            loginContainer.style.display = 'block';
+            appContainer.style.display = 'none';
+        }
+    });
+
+    handleAuthentication();
+});
+
+

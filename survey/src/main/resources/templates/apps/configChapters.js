@@ -1,4 +1,4 @@
-const API_URL1 = 'http://localhost:8080/api/chapters';
+const API_URL1 = 'http://localhost:8080/api/chapter';
 
 // Crear capítulo
 document.getElementById('createChapterForm').addEventListener('submit', async (e) => {

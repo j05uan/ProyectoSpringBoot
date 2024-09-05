@@ -1,4 +1,4 @@
-const API_URL4 = 'http://localhost:8080/api/questions';
+const API_URL4 = 'http://localhost:8080/api/question';
 
 // Crear pregunta
 document.getElementById('createQuestionForm').addEventListener('submit', async (e) => {

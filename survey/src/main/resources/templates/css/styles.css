@@ -6,7 +6,11 @@ body {
     margin: 0;
     padding: 0;
 }
+body #login-container{
 
+    display: grid;
+    place-items: center;
+}
 nav {
     background-color: #e8d5b5; /* Color hueso */
     padding: 10px;
@@ -97,4 +101,19 @@ form button:hover {
 
 section {
     margin-top: 20px;
+}
+#app-container{
+    display: none;
+}
+#login-container {
+    margin-top: 10rem;
+    padding: 4px;
+}
+#loginForm{
+    padding-right: 40px;
+}
+
+#app-container main section form{
+    padding-right: 40px;
+
 }
