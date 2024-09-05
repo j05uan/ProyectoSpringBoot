@@ -8,6 +8,6 @@ import com.survey.survey.roles.domain.entity.Roles;
 
 public interface Rolesrepository extends JpaRepository<Roles,Long> {
 
-    List<Roles> findRolesByRoleName(List<String> rolesnames);
+    List<Roles> findByNameIn(List<String> rolesnames);
 
 }

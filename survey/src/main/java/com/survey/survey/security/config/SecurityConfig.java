@@ -43,9 +43,9 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorizeHttpRequestsCustomizer -> {
                 authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
-                authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.GET, "/auth/get").hasRole("Admin") ;
-                authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyAuthority("CREATE");
-                authorizeHttpRequestsCustomizer.anyRequest().denyAll();
+                // authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.GET, "/auth/get").hasRole("Admin") ;
+                // authorizeHttpRequestsCustomizer.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyAuthority("CREATE");
+                authorizeHttpRequestsCustomizer.anyRequest().permitAll();
             })
             .addFilterBefore(new JwtTokenValidater(jwtUtils), BasicAuthenticationFilter.class)
             .build();
