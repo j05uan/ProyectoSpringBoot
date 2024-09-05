@@ -30,11 +30,6 @@ public class SecurityConfig {
     @Autowired
     private JwtUtils jwtUtils;
 
-
-
-    @Autowired
-    private AuthenticationConfiguration authenticationConfiguration;
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http

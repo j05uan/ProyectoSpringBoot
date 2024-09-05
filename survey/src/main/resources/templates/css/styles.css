@@ -1,0 +1,100 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5dc; /* Color crema */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #e8d5b5; /* Color hueso */
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    background-color: #d0b8a3; /* Color crema más oscuro */
+    border-radius: 5px;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    background-color: #e8d5b5; /* Color hueso */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+main {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* Estilos de formularios */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #d0b8a3; /* Color crema más oscuro */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #b39a8f; /* Color hueso más oscuro */
+    transition: background-color 0.3s ease;
+}
+
+section {
+    margin-top: 20px;
+}
