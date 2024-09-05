@@ -11,7 +11,7 @@ body #login-container{
     display: grid;
     place-items: center;
 }
-nav {
+#app-container nav {
     background-color: #e8d5b5; /* Color hueso */
     padding: 10px;
     position: fixed;
@@ -21,30 +21,30 @@ nav {
     z-index: 1000;
 }
 
-nav ul {
+#app-container nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
+#app-container nav ul li {
     display: inline-block;
     margin-right: 15px;
 }
 
-nav ul li a {
+#app-container nav ul li a {
     text-decoration: none;
     color: #333;
     padding: 5px 10px;
     display: inline-block;
 }
 
-nav ul li a:hover {
+#app-container nav ul li a:hover {
     background-color: #d0b8a3; /* Color crema más oscuro */
     border-radius: 5px;
 }
 
-nav ul li ul {
+#app-container nav ul li ul {
     display: none;
     position: absolute;
     background-color: #e8d5b5; /* Color hueso */
@@ -53,7 +53,7 @@ nav ul li ul {
     margin-top: 5px;
 }
 
-nav ul li:hover ul {
+#app-container nav ul li:hover ul {
     display: block;
 }
 
@@ -62,7 +62,6 @@ main {
     margin-top: 50px;
 }
 
-/* Estilos de formularios */
 form {
     background-color: #fff;
     padding: 20px;
@@ -106,7 +105,7 @@ section {
     display: none;
 }
 #login-container {
-    margin-top: 10rem;
+    /* margin-top: 10rem; */
     padding: 4px;
 }
 #loginForm{
@@ -115,5 +114,59 @@ section {
 
 #app-container main section form{
     padding-right: 40px;
+}
 
+#contenedor{
+    height: 100%;
+    width: 100%;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+    width: 90%;
+}
+.navegador{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+
+}
+header nav a{
+    text-decoration: none;
+    list-style: none;
+    
+}
+.sign-in{
+    display: flex;
+    justify-content: space-around;
+}
+
+.Home{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Home span{
+    font-size: 14px;
+}
+
+.Home h1{
+    font-family: "Averta",sans-serif;
+    font-size: 6vw;
+    color: rgba(0,0,0,0);
+    -webkit-text-stroke: 2px #CECAE3;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    margin-top: 0px;
+    text-transform: uppercase;
+}
+
+#contenedor{
+    padding-left: 54px;
 }

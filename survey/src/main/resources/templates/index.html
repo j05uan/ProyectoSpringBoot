@@ -7,48 +7,6 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#" id="homeLink">Inicio</a></li>
-            <li>
-                <a href="#">Encuestas</a>
-                <ul>
-                    <li><a href="#create-survey">Crear Encuesta</a></li>
-                    <li><a href="#list-surveys">Lista de Encuestas</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Capítulos</a>
-                <ul>
-                    <li><a href="#createChapterForm">Crear Capítulo</a></li>
-                    <li><a href="#updateChapterForm">Actualizar Capítulo</a></li>
-                    <li><a href="#deleteChapterForm">Eliminar Capítulo</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Preguntas</a>
-                <ul>
-                    <li><a href="#createQuestionForm">Crear Pregunta</a></li>
-                    <li><a href="#updateQuestionForm">Actualizar Pregunta</a></li>
-                    <li><a href="#deleteQuestionForm">Eliminar Pregunta</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Opciones de Respuesta</a>
-                <ul>
-                    <li><a href="#createResponseOptionForm">Crear Opción de Respuesta</a></li>
-                    <li><a href="#updateResponseOptionForm">Actualizar Opción de Respuesta</a></li>
-                    <li><a href="#deleteResponseOptionForm">Eliminar Opción de Respuesta</a></li>
-                </ul>
-            </li>
-            <!-- <li><a href="#profile" id="profileLink">Perfil</a></li>
-            <li><a href="#" id="loginLink">
-                <input type="text" id="loginClick" required> -->
-                <!-- <button type="submit" id="loginClick" onclick="visibilidad()" >Login</button>
-            </a></li> --> 
-        </ul>
-    </nav>
-
     <div id="login-container">
         <h1>Login</h1>
         <form id="loginForm">
@@ -60,8 +18,77 @@
         </form>
         <p id="loginMessage"></p>
     </div>
+    <section id="contenedor">
+        <header>
+            <div class="logo-section">
+                <a href="">
+                    <img src="" alt="">
+                </a>
+            </div>
+            <nav class="navegador">
+                <a href="#section-home">Home</a>
+                <a href="#">About</a>
+                <a href="#">Surveys</a>
+                <a href="#">Sign in</a>
+                <a href="#">Sign up</a>
+            </nav>
+        </header>
 
+        <section class="Home" id="section-home">
+            <span> <p> ~  from scratch  ~ </p> <p> ~  surveys with secure database  ~ </p></span>
+            <h1>  Create surveys with ease. </h1>
+            <p>
+                "Design from scratch or use our pre-made templates to get fast and accurate results. Intuitive and powerful, all at your fingertips!"
+            </p>
+            <div class="sign-in">
+                <button class="sign">Sign in</button>
+                <button class="sign">Sign up</button>
+            </div>
+            
+        </section>
+    </section>
     <div id="app-container">
+        <nav>
+            <ul>
+                <li><a href="#" id="homeLink">Inicio</a></li>
+                <li>
+                    <a href="#">Encuestas</a>
+                    <ul>
+                        <li><a href="#create-survey">Crear Encuesta</a></li>
+                        <li><a href="#list-surveys">Lista de Encuestas</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Capítulos</a>
+                    <ul>
+                        <li><a href="#createChapterForm">Crear Capítulo</a></li>
+                        <li><a href="#updateChapterForm">Actualizar Capítulo</a></li>
+                        <li><a href="#deleteChapterForm">Eliminar Capítulo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Preguntas</a>
+                    <ul>
+                        <li><a href="#createQuestionForm">Crear Pregunta</a></li>
+                        <li><a href="#updateQuestionForm">Actualizar Pregunta</a></li>
+                        <li><a href="#deleteQuestionForm">Eliminar Pregunta</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Opciones de Respuesta</a>
+                    <ul>
+                        <li><a href="#createResponseOptionForm">Crear Opción de Respuesta</a></li>
+                        <li><a href="#updateResponseOptionForm">Actualizar Opción de Respuesta</a></li>
+                        <li><a href="#deleteResponseOptionForm">Eliminar Opción de Respuesta</a></li>
+                    </ul>
+                </li>
+                <!-- <li><a href="#profile" id="profileLink">Perfil</a></li> -->
+                <!--<li><a href="#" id="loginLink">
+                    <input type="text" id="loginClick" required> -->
+                    <!-- <button type="submit" id="loginClick" onclick="visibilidad()" >Login</button>
+                </a></li> --> 
+            </ul>
+        </nav>
         <main>
             <section id="home">
                 <h1>Bienvenido</h1>
