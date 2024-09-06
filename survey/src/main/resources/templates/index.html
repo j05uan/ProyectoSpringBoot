@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="login-container">
-        <h1>Login</h1>
+        <h1>Sign in</h1>
         <form id="loginForm">
             <label for="Username">Username:</label>
             <input type="text" id="username" placeholder="Username" required />
@@ -19,18 +19,19 @@
         <p id="loginMessage"></p>
     </div>
     <div id="createUserForm">
-        <h1>Login</h1>
-        <form id="loginForm">
+        <h1>Sign up</h1>
+        <form id="loginForm1"> 
             <label for="usernameP">Username:</label>
             <input type="text" id="usernameP" placeholder="Username" required />
             <label for="password1">Password:</label>
             <input type="password" id="password1" placeholder="Password" required />
             <label for="password2">Confirm Password:</label>
             <input type="password" id="password2" placeholder="Password" required />
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
         </form>
         <p id="loginMessage"></p>
     </div>
+    
     <section id="contenedor">
         <header>
             <div class="logo-section">
@@ -43,7 +44,7 @@
                 <a href="#">About</a>
                 <a href="#">Surveys</a>
                 <a href="#"  onclick="openSingIn()" >Sign in</a>
-                <a href="#" >Sign up</a>
+                <a href="#"  onclick="openSingUp()">Sign up</a>
             </nav>
         </header>
 
@@ -53,10 +54,6 @@
             <p>
                 "Design from scratch or use our pre-made templates to get fast and accurate results. Intuitive and powerful, all at your fingertips!"
             </p>
-            <!-- <div class="sign-in">
-                <button onclick="openSingIn()" class="sign">Sign in</button>
-                <button class="sign">Sign up</button>
-            </div> -->
             
         </section>
     </section>
@@ -135,8 +132,8 @@
             <section id="update-survey">
                 <h2>Actualizar Encuesta</h2>
                 <form id="updateSurveyForm">
-                    <label for="updateId">ID:</label>
-                    <input type="number" id="updateId" required>
+                    <label for="updateIdS">ID:</label>
+                    <input type="number" id="updateIdS" required>
                     <label for="updateName">Nombre:</label>
                     <input type="text" id="updateName" required>
                     <label for="updateDescription">Descripción:</label>
@@ -279,6 +276,7 @@
             </section>
         </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
 
     <script src="./apps/scripts.js"></script>
     <script src="./apps/configChapters.js"></script>
@@ -286,7 +284,6 @@
     <script src="./apps/configQuestions.js"></script>
     <script src="./apps/configSurveys.js"></script>
     <script src="./apps/login.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
-
+    
 </body>
 </html>

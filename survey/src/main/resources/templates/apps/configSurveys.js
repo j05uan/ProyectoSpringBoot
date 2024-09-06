@@ -28,7 +28,7 @@ document.getElementById('createSurveyForm').addEventListener('submit', async (e)
 
 document.getElementById('updateSurveyForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const id = document.getElementById('updateId').value;
+    const id = document.getElementById('updateIdS').value;
     const name = document.getElementById('updateName').value;
     const description = document.getElementById('updateDescription').value;
     

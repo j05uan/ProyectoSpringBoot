@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
     const profileLink = document.getElementById('profileLink');
-    const loginLink = document.getElementById('loginLink');
 
     function isAuthenticated() {
         return localStorage.getItem('token') !== null;
@@ -53,14 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         handleAuthentication(); 
     }
 
-
-    document.getElementById('logoutButton').addEventListener('click', handleLogout);
-
-    loginLink.addEventListener('click', () => {
-        if (isAuthenticated()) {
-            handleLogout(); 
-        }
-    });
 
     profileLink.addEventListener('click', () => {
         if (!isAuthenticated()) {

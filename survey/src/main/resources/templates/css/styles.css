@@ -101,13 +101,14 @@ section {
 #app-container{
     display: none;
 }
-#login-container {
+#login-container,#createUserForm {
     /* margin-top: 10rem; */
     display: none;
     /* padding: 4px; */
     height: 80vh;
 
 }
+
 #loginForm{
     padding-right: 40px;
 }
@@ -174,9 +175,6 @@ header nav a{
     justify-content: space-between;
 }
 
-.section-home span {
-    display: flex;
-}
 
 #p2, #p1{
     position: relative;
