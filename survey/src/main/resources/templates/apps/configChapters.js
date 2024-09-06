@@ -25,6 +25,7 @@ document.getElementById('createChapterForm').addEventListener('submit', async (e
 
         if (response.ok) {
             alert('Capítulo creado con éxito');
+            document.getElementById('createChapterForm').reset();
             fetchChapters();
         } else {
             throw new Error('Error al crear el capítulo');
@@ -56,6 +57,7 @@ document.getElementById('updateChapterForm').addEventListener('submit', async (e
 
         if (response.ok) {
             alert('Capítulo actualizado con éxito');
+            document.getElementById('createChapterForm').reset();
             fetchChapters();
         } else {
             throw new Error('Error al actualizar el capítulo');
@@ -78,6 +80,7 @@ document.getElementById('deleteChapterForm').addEventListener('submit', async (e
 
         if (response.ok) {
             alert('Capítulo eliminado con éxito');
+            document.getElementById('createChapterForm').reset();
             fetchChapters();
         } else {
             throw new Error('Error al eliminar el capítulo');
@@ -128,6 +131,7 @@ document.getElementById('patchChapterForm').addEventListener('submit', async (e)
 
         if (response.ok) {
             alert('Capítulo parcialmente actualizado con éxito');
+            document.getElementById('createChapterForm').reset();
             fetchChapters();
         } else {
             throw new Error('Error al actualizar el capítulo');
@@ -138,7 +142,7 @@ document.getElementById('patchChapterForm').addEventListener('submit', async (e)
 });
 
 
-async function fetchSurveys() {
+async function fetchSurveysInChapters() {
     try {
         const response = await fetch('http://localhost:8080/api/surveys');
         const surveys = await response.json();

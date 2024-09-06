@@ -27,6 +27,7 @@ document.getElementById('createQuestionForm').addEventListener('submit', async (
 
         if (response.ok) {
             alert('Pregunta creada con éxito');
+            document.getElementById('createQuestionForm').reset();
             fetchQuestions();
         } else {
             throw new Error('Error al crear la pregunta');
@@ -60,6 +61,7 @@ document.getElementById('updateQuestionForm').addEventListener('submit', async (
 
         if (response.ok) {
             alert('Pregunta actualizada con éxito');
+            document.getElementById('createQuestionForm').reset();
             fetchQuestions();
         } else {
             throw new Error('Error al actualizar la pregunta');
@@ -82,6 +84,7 @@ document.getElementById('deleteQuestionForm').addEventListener('submit', async (
 
         if (response.ok) {
             alert('Pregunta eliminada con éxito');
+            document.getElementById('createQuestionForm').reset();
             fetchQuestions();
         } else {
             throw new Error('Error al eliminar la pregunta');
@@ -130,6 +133,7 @@ document.getElementById('patchQuestionForm').addEventListener('submit', async (e
 
         if (response.ok) {
             alert('Pregunta parcialmente actualizada con éxito');
+            document.getElementById('createQuestionForm').reset();
             fetchQuestions();
         } else {
             throw new Error('Error al actualizar la pregunta');

@@ -32,6 +32,7 @@ document.getElementById('createResponseOptionForm').addEventListener('submit', a
 
         if (response.ok) {
             alert('Opción de respuesta creada con éxito');
+            document.getElementById('createResponseOptionForm').reset();
             fetchResponseOptions();
         } else {
             throw new Error('Error al crear la opción de respuesta');
@@ -70,6 +71,7 @@ document.getElementById('updateResponseOptionForm').addEventListener('submit', a
 
         if (response.ok) {
             alert('Opción de respuesta actualizada con éxito');
+            document.getElementById('createResponseOptionForm').reset();
             fetchResponseOptions();
         } else {
             throw new Error('Error al actualizar la opción de respuesta');
@@ -92,6 +94,7 @@ document.getElementById('deleteResponseOptionForm').addEventListener('submit', a
 
         if (response.ok) {
             alert('Opción de respuesta eliminada con éxito');
+            document.getElementById('createResponseOptionForm').reset();
             fetchResponseOptions();
         } else {
             throw new Error('Error al eliminar la opción de respuesta');
@@ -140,6 +143,7 @@ document.getElementById('patchResponseOptionForm').addEventListener('submit', as
 
         if (response.ok) {
             alert('Opción de respuesta parcialmente actualizada con éxito');
+            document.getElementById('createResponseOptionForm').reset();
             fetchResponseOptions();
         } else {
             throw new Error('Error al actualizar la opción de respuesta');

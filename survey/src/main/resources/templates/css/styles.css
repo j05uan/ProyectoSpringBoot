@@ -4,13 +4,10 @@ body {
     background-color: #f5f5dc; /* Color crema */
     color: #333;
     margin: 0;
-    padding: 0;
+    padding: 30px;
+    padding-right: 0px;
 }
-body #login-container{
 
-    display: grid;
-    place-items: center;
-}
 #app-container nav {
     background-color: #e8d5b5; /* Color hueso */
     padding: 10px;
@@ -106,9 +103,9 @@ section {
 }
 #login-container {
     /* margin-top: 10rem; */
-    visibility: hidden;
-    position: absolute;
-    padding: 4px;
+    display: none;
+    /* padding: 4px; */
+    height: 80vh;
 
 }
 #loginForm{
@@ -133,7 +130,7 @@ header{
     width: 90%;
 }
 .navegador{
-    width: 50%;
+    width: 70%;
     display: flex;
     justify-content: space-between;
 
@@ -152,6 +149,7 @@ header nav a{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 80vh;
 }
 
 .Home span{
@@ -171,5 +169,22 @@ header nav a{
 }
 
 #contenedor{
-    padding-left: 54px;
+    /* padding-left: 14px; */
+    display: block;
+    justify-content: space-between;
 }
+
+.section-home span {
+    display: flex;
+}
+
+#p2, #p1{
+    position: relative;
+    margin: 0px;
+    left: -10px;
+}
+#p2{
+    top: -16px;
+    left: 112px;
+}
+

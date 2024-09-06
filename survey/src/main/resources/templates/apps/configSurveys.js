@@ -16,6 +16,7 @@ document.getElementById('createSurveyForm').addEventListener('submit', async (e)
 
         if (response.ok) {
             alert('Encuesta creada con éxito');
+            document.getElementById('createSurveyForm').reset();
             fetchSurveys();
         } else {
             throw new Error('Error al crear la encuesta');
@@ -39,6 +40,7 @@ document.getElementById('updateSurveyForm').addEventListener('submit', async (e)
 
     if (response.ok) {
         alert('Encuesta actualizada con éxito');
+        document.getElementById('createSurveyForm').reset();
         fetchSurveys();
     } else {
         alert('Error al actualizar la encuesta');
@@ -55,6 +57,7 @@ document.getElementById('deleteSurveyForm').addEventListener('submit', async (e)
 
     if (response.ok) {
         alert('Encuesta eliminada con éxito');
+        document.getElementById('createSurveyForm').reset();
         fetchSurveys();
     } else {
         alert('Error al eliminar la encuesta');
