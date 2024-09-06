@@ -163,6 +163,31 @@ async function fetchChapters() {
     }
 }
 
+async function fetchQuestionsIn(id){
+    try {
+        const response = await fetch('http://localhost:8080/api/question');
+        const questions = await response.json();
+        
+        const questionselect = document.getElementById(id);
+        questionselect.innerHTML = '<option value="">Selecciona una Pregunta</option>'; // Limpiar opciones actuales
+        
+        questions.forEach(question => {
+            const option = document.createElement('option');
+            option.value = question.id;
+            option.textContent = `${question.question_number} - ${question.question_text}`;
+            questionselect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error al obtener encuestas:', error);
+    }
+}
+
 // Cargar preguntas y capítulos al inicio
-fetchQuestions();
-fetchChapters();
+document.addEventListener('DOMContentLoaded', () => {
+    fetchQuestions();
+    fetchChapters();
+    fetchQuestionsIn('updateQuestionId');
+    fetchQuestionsIn('deleteQuestionId');
+    fetchQuestionsIn('responseOptionQuestionId');
+
+});

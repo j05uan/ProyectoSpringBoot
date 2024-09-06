@@ -77,6 +77,32 @@ async function fetchSurveys() {
         surveyList.appendChild(li);
     });
 }
-
+async function fetchSurveysIn(id) {
+    try {
+        const response = await fetch('http://localhost:8080/api/surveys');
+        const surveys = await response.json();
+        
+        const surveySelect = document.getElementById(id);
+        surveySelect.innerHTML = '<option value="">Selecciona una encuesta</option>'; // Limpiar opciones actuales
+        
+        surveys.forEach(survey => {
+            const option = document.createElement('option');
+            option.value = survey.id;
+            option.textContent = `${survey.name} - ${survey.description}`;
+            surveySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error al obtener encuestas:', error);
+    }
+}
 // Cargar encuestas al inicio
-fetchSurveys();
+document.addEventListener('DOMContentLoaded', () => {
+    fetchSurveys();
+    fetchSurveysIn('surveyIdS');
+    fetchSurveysIn('updateIdS');
+    fetchSurveysIn('deleteId');
+    fetchSurveysIn('updateSurveyId');
+    fetchSurveysIn('questionSurveyId');
+
+
+});
