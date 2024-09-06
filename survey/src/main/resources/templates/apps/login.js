@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const appContainer = document.getElementById('app-container');
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
-    const profileLink = document.getElementById('profileLink');
+    // const profileLink = document.getElementById('profile');
+    appContainer.style.display = 'none';
 
     function isAuthenticated() {
         return localStorage.getItem('token') !== null;
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     profileLink.addEventListener('click', () => {
         if (!isAuthenticated()) {
-            loginMessage.textContent = 'Debes iniciar sesión para acceder a tu perfil.';
+            loginMessage.textContent = 'Debes iniciar sesión para acceder.';
             loginContainer.style.display = 'block';
             appContainer.style.display = 'none';
         }

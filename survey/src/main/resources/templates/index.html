@@ -92,11 +92,7 @@
                         <li><a href="#deleteResponseOptionForm">Eliminar Opción de Respuesta</a></li>
                     </ul>
                 </li>
-                <!-- <li><a href="#profile" id="profileLink">Perfil</a></li> -->
-                <!--<li><a href="#" id="loginLink">
-                    <input type="text" id="loginClick" required> -->
-                    <!-- <button type="submit" id="loginClick" onclick="visibilidad()" >Login</button>
-                </a></li> --> 
+                
             </ul>
         </nav>
         <main>
@@ -155,8 +151,8 @@
             <section id="createChapterForm">
                 <h2>Crear Capítulo</h2>
                 <form>
-                    <label for="surveyId">ID de Encuesta:</label>
-                    <input type="number" id="surveyId" required>
+                    <label for="surveyIdS">ID de Encuesta:</label>
+                    <select  id="surveyIdS"></select>
                     <label for="chapterNumber">Número:</label>
                     <input type="text" id="chapterNumber" required>
                     <label for="chapterTitle">Título:</label>
@@ -164,7 +160,12 @@
                     <button type="submit">Crear</button>
                 </form>
             </section>
-
+            <section id="list-chapters">
+                <h2>Lista de Capítulos</h2>
+                <button onclick="fetchChapters()">Actualizar Lista</button>
+                <ul id="chapterList"></ul>
+            </section>
+            
             <section id="updateChapterForm">
                 <h2>Actualizar Capítulo</h2>
                 <form>
@@ -208,7 +209,12 @@
                     <button type="submit">Crear</button>
                 </form>
             </section>
-
+            <section id="list-questions">
+                <h2>Lista de Preguntas</h2>
+                <button onclick="fetchQuestions()">Actualizar Lista</button>
+                <ul id="questionList"></ul>
+            </section>
+            
             <section id="updateQuestionForm">
                 <h2>Actualizar Pregunta</h2>
                 <form>
@@ -250,7 +256,12 @@
                     <button type="submit">Crear</button>
                 </form>
             </section>
-
+            <section id="list-response-options">
+                <h2>Lista de Opciones de Respuesta</h2>
+                <button onclick="fetchResponseOptions()">Actualizar Lista</button>
+                <ul id="responseOptionList"></ul>
+            </section>
+            
             <section id="updateResponseOptionForm">
                 <h2>Actualizar Opción de Respuesta</h2>
                 <form>

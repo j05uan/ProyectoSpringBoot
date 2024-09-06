@@ -1,4 +1,24 @@
 const API_URL1 = 'http://localhost:8080/api/chapter';
+const API_URL_SURVEYS = 'http://localhost:8080/api/surveys';
+
+async function fetchSurveys() {
+    try {
+        const response = await fetch(API_URL_SURVEYS);
+        const surveys = await response.json();
+        
+        const surveySelect = document.getElementById('surveyId');
+        surveySelect.innerHTML = '<option value="">Selecciona una encuesta</option>'; // Limpiar opciones actuales
+        
+        surveys.forEach(survey => {
+            const option = document.createElement('option');
+            option.value = survey.id;
+            option.textContent = `${survey.name} - ${survey.description}`;
+            surveySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error al obtener encuestas:', error);
+    }
+}
 
 // Crear capítulo
 document.getElementById('createChapterForm').addEventListener('submit', async (e) => {
@@ -110,36 +130,36 @@ async function fetchChapters() {
 }
 
 // Actualizar capítulo con PATCH
-document.getElementById('patchChapterForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+// document.getElementById('patchChapterForm').addEventListener('submit', async (e) => {
+//     e.preventDefault();
     
-    const id = document.getElementById('patchId').value;
-    const updates = {
-        survey: {
-            id: document.getElementById('patchSurveyId').value
-        },
-        chapter_number: document.getElementById('patchChapterNumber').value,
-        chapter_title: document.getElementById('patchChapterTitle').value
-    };
+//     const id = document.getElementById('patchId').value;
+//     const updates = {
+//         survey: {
+//             id: document.getElementById('patchSurveyId').value
+//         },
+//         chapter_number: document.getElementById('patchChapterNumber').value,
+//         chapter_title: document.getElementById('patchChapterTitle').value
+//     };
     
-    try {
-        const response = await fetch(`${API_URL1}/${id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updates)
-        });
+//     try {
+//         const response = await fetch(`${API_URL1}/${id}`, {
+//             method: 'PATCH',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(updates)
+//         });
 
-        if (response.ok) {
-            alert('Capítulo parcialmente actualizado con éxito');
-            document.getElementById('createChapterForm').reset();
-            fetchChapters();
-        } else {
-            throw new Error('Error al actualizar el capítulo');
-        }
-    } catch (error) {
-        alert(error.message);
-    }
-});
+//         if (response.ok) {
+//             alert('Capítulo parcialmente actualizado con éxito');
+//             document.getElementById('createChapterForm').reset();
+//             fetchChapters();
+//         } else {
+//             throw new Error('Error al actualizar el capítulo');
+//         }
+//     } catch (error) {
+//         alert(error.message);
+//     }
+// });
 
 
 async function fetchSurveysInChapters() {
@@ -147,7 +167,7 @@ async function fetchSurveysInChapters() {
         const response = await fetch('http://localhost:8080/api/surveys');
         const surveys = await response.json();
         
-        const surveySelect = document.getElementById('surveyId');
+        const surveySelect = document.getElementById('surveyIdS');
         surveySelect.innerHTML = '<option value="">Selecciona una encuesta</option>'; // Limpiar opciones actuales
         
         surveys.forEach(survey => {
@@ -163,8 +183,10 @@ async function fetchSurveysInChapters() {
 
 
 
-
-// Cargar capítulos al inicio
-fetchChapters();
+// Cargar encuestas y capítulos al inicio
+document.addEventListener('DOMContentLoaded', () => {
+    fetchSurveys();
+    fetchChapters();
+});
 
 

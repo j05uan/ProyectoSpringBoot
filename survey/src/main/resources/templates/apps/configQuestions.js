@@ -6,7 +6,7 @@ document.getElementById('createQuestionForm').addEventListener('submit', async (
     
     const question = {
         chapter: {
-            id: document.getElementById('chapterId').value 
+            id: document.getElementById('questionChapterId').value 
         },
         at: {
             createdAt: new Date().toISOString(),
@@ -114,42 +114,42 @@ async function fetchQuestions() {
 }
 
 // Actualizar pregunta con PATCH
-document.getElementById('patchQuestionForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+// document.getElementById('patchQuestionForm').addEventListener('submit', async (e) => {
+//     e.preventDefault();
     
-    const id = document.getElementById('patchId').value;
-    const updates = {
-        response_type: document.getElementById('patchResponseType').value,
-        comment_question: document.getElementById('patchCommentQuestion').value,
-        question_text: document.getElementById('patchQuestionText').value
-    };
+//     const id = document.getElementById('patchId').value;
+//     const updates = {
+//         response_type: document.getElementById('patchResponseType').value,
+//         comment_question: document.getElementById('patchCommentQuestion').value,
+//         question_text: document.getElementById('patchQuestionText').value
+//     };
     
-    try {
-        const response = await fetch(`${API_URL4}/${id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updates)
-        });
+//     try {
+//         const response = await fetch(`${API_URL4}/${id}`, {
+//             method: 'PATCH',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(updates)
+//         });
 
-        if (response.ok) {
-            alert('Pregunta parcialmente actualizada con éxito');
-            document.getElementById('createQuestionForm').reset();
-            fetchQuestions();
-        } else {
-            throw new Error('Error al actualizar la pregunta');
-        }
-    } catch (error) {
-        alert(error.message);
-    }
-});
+//         if (response.ok) {
+//             alert('Pregunta parcialmente actualizada con éxito');
+//             document.getElementById('createQuestionForm').reset();
+//             fetchQuestions();
+//         } else {
+//             throw new Error('Error al actualizar la pregunta');
+//         }
+//     } catch (error) {
+//         alert(error.message);
+//     }
+// });
 
 // Obtener capítulos para el selector
 async function fetchChapters() {
     try {
-        const response = await fetch('http://localhost:8080/api/chapters');
+        const response = await fetch('http://localhost:8080/api/chapter');
         const chapters = await response.json();
         
-        const chapterSelect = document.getElementById('chapterId');
+        const chapterSelect = document.getElementById('questionChapterId');
         chapterSelect.innerHTML = '<option value="">Selecciona un capítulo</option>'; // Limpiar opciones actuales
         
         chapters.forEach(chapter => {

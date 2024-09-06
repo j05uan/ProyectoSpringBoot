@@ -7,17 +7,14 @@ document.getElementById('createResponseOptionForm').addEventListener('submit', a
     const responseOption = {
         option_value: document.getElementById('optionValue').value,
         categories: {
-            id: document.getElementById('categoryId').value
+            id: document.getElementById('responseOptionCategoryId').value
         },
         at: {
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
         },
-        responseOptions: {
-            id: document.getElementById('parentResponseId').value || null
-        },
         question: {
-            id: document.getElementById('questionId').value
+            id: document.getElementById('responseOptionQuestionId').value
         },
         comment_response: document.getElementById('commentResponse').value,
         option_text: document.getElementById('optionText').value
@@ -123,43 +120,43 @@ async function fetchResponseOptions() {
     }
 }
 
-// Actualizar opción de respuesta con PATCH
-document.getElementById('patchResponseOptionForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+// // Actualizar opción de respuesta con PATCH
+// document.getElementById('patchResponseOptionForm').addEventListener('submit', async (e) => {
+//     e.preventDefault();
     
-    const id = document.getElementById('patchId').value;
-    const updates = {
-        option_value: document.getElementById('patchOptionValue').value,
-        comment_response: document.getElementById('patchCommentResponse').value,
-        option_text: document.getElementById('patchOptionText').value
-    };
+//     const id = document.getElementById('patchId').value;
+//     const updates = {
+//         option_value: document.getElementById('patchOptionValue').value,
+//         comment_response: document.getElementById('patchCommentResponse').value,
+//         option_text: document.getElementById('patchOptionText').value
+//     };
     
-    try {
-        const response = await fetch(`${API_URL2}/${id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updates)
-        });
+//     try {
+//         const response = await fetch(`${API_URL2}/${id}`, {
+//             method: 'PATCH',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(updates)
+//         });
 
-        if (response.ok) {
-            alert('Opción de respuesta parcialmente actualizada con éxito');
-            document.getElementById('createResponseOptionForm').reset();
-            fetchResponseOptions();
-        } else {
-            throw new Error('Error al actualizar la opción de respuesta');
-        }
-    } catch (error) {
-        alert(error.message);
-    }
-});
+//         if (response.ok) {
+//             alert('Opción de respuesta parcialmente actualizada con éxito');
+//             document.getElementById('createResponseOptionForm').reset();
+//             fetchResponseOptions();
+//         } else {
+//             throw new Error('Error al actualizar la opción de respuesta');
+//         }
+//     } catch (error) {
+//         alert(error.message);
+//     }
+// });
 
 // Obtener categorías para el selector
 async function fetchCategories() {
     try {
-        const response = await fetch('http://localhost:8080/api/categories_catalog');
+        const response = await fetch('http://localhost:8080/api/category');
         const categories = await response.json();
         
-        const categorySelect = document.getElementById('categoryId');
+        const categorySelect = document.getElementById('responseOptionCategoryId');
         categorySelect.innerHTML = '<option value="">Selecciona una categoría</option>'; // Limpiar opciones actuales
         
         categories.forEach(category => {
@@ -176,10 +173,10 @@ async function fetchCategories() {
 // Obtener preguntas para el selector
 async function fetchQuestions() {
     try {
-        const response = await fetch('http://localhost:8080/api/questions');
+        const response = await fetch('http://localhost:8080/api/question');
         const questions = await response.json();
         
-        const questionSelect = document.getElementById('questionId');
+        const questionSelect = document.getElementById('responseOptionQuestionId');
         questionSelect.innerHTML = '<option value="">Selecciona una pregunta</option>'; // Limpiar opciones actuales
         
         questions.forEach(question => {
