@@ -113,6 +113,8 @@ async function fetchQuestions() {
     }
 }
 
+
+
 // Actualizar pregunta con PATCH
 // document.getElementById('patchQuestionForm').addEventListener('submit', async (e) => {
 //     e.preventDefault();
